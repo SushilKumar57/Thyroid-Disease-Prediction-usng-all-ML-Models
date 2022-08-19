@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thyroid Prediction Model</title>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="shortcut icon" type="image/jpg" href="/static/images/banner_1.png" />
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<!-- font awsome cdn link -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<!-- custom css file link -->
+<link rel="stylesheet" href="/static/css/style.css">
+
+<!-- Vendor CSS-->
+<link href="/static/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+<link href="/static/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+<link href="/static/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+<link href="/static/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+<!-- Main CSS-->
+<link href="/static/css/main.css" rel="stylesheet" media="all">
+<link href="/static/css/predict.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/static/css/predictresult.css">
+
+<style><!DOCTYPE html>
+h1 {text-align: center;}
+h2 {text-align: center;}
+h3 {text-align: center;}
+p {text-align: center;}
+div {text-align: center;}
+
+</style>
+</head>
+
+<body>
+
+  <!-- header section start -->
+
+  <section class="header" id="header">
+
+  <a href="#" class="logo"> <i class="fas fa-s"></i> Internship </a>
+
+  <nav class="navbar">
+      <div id="nav-close" class="fas fa-times"></div>
+      <a href = "https://sushilkumar-majorproject-si-22.herokuapp.com/">home</a>
+      <a href="#">major project</a>
+      <a href= "https://sushilkumar-majorproject-si-22.herokuapp.com/mini">mini project</a>
+      <a href= "https://sushilkumar-majorproject-si-22.herokuapp.com/guidance">guidance</a>
+      <a href= "https://sushilkumar-majorproject-si-22.herokuapp.com/blogs">blogs</a>
+      <a href= https://sushilkumar-majorproject-si-22.herokuapp.com/aboutusnew>About us</a>
+      <a link href="#">search</a>
+  </nav>
+
+  <div class="icons">
+      <div id="menu-btn" class="fas fa-bars"></div>
+      <a href="#" class="fas fa-search"></a>
+  </div>
+  </section>
+
+  <!-- header section ends -->
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+<div class="" style="background-color:blue;" >
+<div class="clearfix">
+
+<div class="col-md-12">
+<center><p style="font-size:40px;color:white;margin-top:10px;">Poornima Institute of Engineering & Technology</p></center>
+<center><p style="font-size:30px;color:white;margin-top:10px;">Department of Computer Engineering</p></center>
+<center><p style="font-size:25px;color:white;margin-top:10px;">Summer Internship 2022 on Machine learning and Data Science</p></center>
+</div>
+</div>
+</div>
+
+<div class="login">
+<h2>Thyroid Disease Prediction Analysis of Patients using all Models</h2>
+
+<!-- Main Input For Receiving Query to our ML -->
+<form action="{{ url_for('predict')}}"method="get">
+
+
+
+<div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+<div class="wrapper wrapper--w790">
+<div class="card card-5">
+<div class="card-heading">
+  <h2 class="title">Prediction Form</h2>
+</div>
+<div class="card-body">
+
+<div class="form-row">
+  <div class="name">Age</div>
+  <div class="value">
+    <div class="input-group">
+      <input type="number" class="input--style-5" id="exp1" name="age" step="any" min="1" max="100" placeholder="Enter Value" required="required">
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">Gender</div>
+  <div class="value">
+    <div class="input-group">
+      <div class="rs-select2 js-select-simple select--no-search">
+        <select input type="number" id="exp2" name ="sex" step = "any" required="required">
+          <option selected value = "0" >Female</option>
+          <option value = "1" >Male</option>
+        </select>
+        <div class="select-dropdown"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">On Thyroxine Medication</div>
+  <div class="value">
+    <div class="input-group">
+      <div class="rs-select2 js-select-simple select--no-search">
+        <select input type="number" id="exp3" name ="on_thyroxine" step = "any" required="required">
+          <option selected value = "0" >False</option>
+          <option value = "1" >True</option>
+        </select>
+        <div class="select-dropdown"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">Query On Thyroxine Medication</div>
+  <div class="value">
+    <div class="input-group">
+      <div class="rs-select2 js-select-simple select--no-search">
+        <select input type="number" id="exp4" name ="query_on_thyroxine" step = "any" required="required">
+          <option selected value = "0" >False</option>
+          <option value = "1" >True</option>
+        </select>
+        <div class="select-dropdown"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">On Antithyroid Medication</div>
+  <div class="value">
+    <div class="input-group">
+      <div class="rs-select2 js-select-simple select--no-search">
+        <select input type="number" id="exp5" name ="on_antithyroid_meds" step = "any" required="required">
+          <option selected value = "0" >False</option>
+          <option value = "1" >True</option>
+        </select>
+        <div class="select-dropdown"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">Sick</div>
+  <div class="value">
+    <div class="input-group">
+      <div class="rs-select2 js-select-simple select--no-search">
+        <select input type="number" id="exp6" name ="sick" step = "any" required="required">
+          <option selected value = "0" >False</option>
+          <option value = "1" >True</option>
+        </select>
+        <div class="select-dropdown"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">Pregnent</div>
+  <div class="value">
+    <div class="input-group">
+      <div class="rs-select2 js-select-simple select--no-search">
+        <select input type="number" id="exp7" name ="pregnant" step = "any" required="required">
+          <option selected value = "0" >False</option>
+          <option value = "1" >True</option>
+        </select>
+        <div class="select-dropdown"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">Undergone Thyroid Surgery</div>
+  <div class="value">
+    <div class="input-group">
+      <div class="rs-select2 js-select-simple select--no-search">
+        <select input type="number" id="exp8" name ="thyroid_surgery" step = "any" required="required">
+          <option selected value = "0" >False</option>
+          <option value = "1" >True</option>
+        </select>
+        <div class="select-dropdown"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">Undergoing I131 Treatment</div>
+  <div class="value">
+    <div class="input-group">
+      <div class="rs-select2 js-select-simple select--no-search">
+        <select input type="number" id="exp9" name ="I131_treatment" step = "any" required="required">
+          <option selected value = "0" >False</option>
+          <option value = "1" >True</option>
+        </select>
+        <div class="select-dropdown"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">Query On Hypothyroid</div>
+  <div class="value">
+    <div class="input-group">
+      <div class="rs-select2 js-select-simple select--no-search">
+        <select input type="number" id="exp10" name ="query_hypothyroid" step = "any" required="required">
+          <option selected value = "0" >False</option>
+          <option value = "1" >True</option>
+        </select>
+        <div class="select-dropdown"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">Query On Hyperthyroid</div>
+  <div class="value">
+    <div class="input-group">
+      <div class="rs-select2 js-select-simple select--no-search">
+        <select input type="number" id="exp11" name ="query_hyperthyroid" step = "any" required="required">
+          <option selected value = "0" >False</option>
+          <option value = "1" >True</option>
+        </select>
+        <div class="select-dropdown"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">Lithium</div>
+  <div class="value">
+    <div class="input-group">
+      <div class="rs-select2 js-select-simple select--no-search">
+        <select input type="number" id="exp12" name="lithium" step = "any" required="required">
+          <option selected value = "0" >False</option>
+          <option value = "1" >True</option>
+        </select>
+        <div class="select-dropdown"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">Goitre</div>
+  <div class="value">
+    <div class="input-group">
+      <div class="rs-select2 js-select-simple select--no-search">
+        <select input type="number" id="exp13" name="goitre" step = "any" required="required">
+          <option selected value = "0" >False</option>
+          <option value = "1" >True</option>
+        </select>
+        <div class="select-dropdown"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">Tumor</div>
+  <div class="value">
+    <div class="input-group">
+      <div class="rs-select2 js-select-simple select--no-search">
+        <select input type="number" id="exp14" name="tumor" step = "any" required="required">
+          <option selected value = "0" >False</option>
+          <option value = "1" >True</option>
+        </select>
+        <div class="select-dropdown"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">Hypopituitary</div>
+  <div class="value">
+    <div class="input-group">
+      <div class="rs-select2 js-select-simple select--no-search">
+        <select input type="number" id="exp15" name="hypopituitary" step = "any" required="required">
+          <option selected value = "0" >False</option>
+          <option value = "1" >True</option>
+        </select>
+        <div class="select-dropdown"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">Psychological Symptoms</div>
+  <div class="value">
+    <div class="input-group">
+      <div class="rs-select2 js-select-simple select--no-search">
+        <select input type="number" id="exp16" name="psych" step = "any" required="required">
+          <option selected value = "0" >False</option>
+          <option value = "1" >True</option>
+        </select>
+        <div class="select-dropdown"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">TSH level</div>
+  <div class="value">
+    <div class="input-group">
+      <input type="number" class="input--style-5"  id="exp17" name="TSH" step="any" min="0" max="530" placeholder="Enter Value" required="required">
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">T3 level</div>
+  <div class="value">
+    <div class="input-group">
+      <input type="number" class="input--style-5" id="exp18" name="T3" step="any" min="0" max="18" placeholder="Enter Value" required="required">
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">TT4 level</div>
+  <div class="value">
+    <div class="input-group">
+      <input type="number" class="input--style-5"  id="exp19" name="TT4" step="any" min="2" max="600" placeholder="Enter Value" required="required">
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">T4U level</div>
+  <div class="value">
+    <div class="input-group">
+      <input type="number" class="input--style-5"  id="exp20" name="T4U" step="any" min="0.17" max="2.33" placeholder="Enter Value" required="required">
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">Free Thyroxine Index level</div>
+  <div class="value">
+    <div class="input-group">
+      <input type="number" class="input--style-5"  id="exp21" name="FTI" step="any" min="1" max="881" placeholder="Enter Value" required="required">
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div class="name">TBG level</div>
+  <div class="value">
+    <div class="input-group">
+      <input type="number" class="input--style-5"   id="exp22" name="TBG" step="any" min="0" max="200" placeholder="Enter Value" required="required">
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-row">
+  <div style="color: MediumVioletRed;" class="name">Choose a Model</div>
+  <div class="value">
+    <div class="input-group">
+      <div class="rs-select2 js-select-simple select--no-search">
+        <select input type="number" id="model1"  step = "any"  name="model1" id="exp"  required>
+          <option value="0">Linear Regression Classifier</option>
+          <option value="1">Logistic Regression Classifier</option>
+          <option value="2">Decision Tree Classifier</option>
+          <option value="3">K Nearest Neighbor Classifier</option>
+          <option value="4">Kernal SVM Classifier</option>
+          <option value="5">SVM Classifier</option>
+          <option selected value="6">Random Forest Classifier</option>
+          <option value="7">Naive Bayes Classifier</option>
+          <option value="8">K Means Classifier</option>
+        </select>
+        <div class="select-dropdown"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<br>
+<br>
+<button style="color: MediumVioletRed;" type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+</form>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+<br>
+<br>
+<h2 style="color: white;">{{ prediction_text }}<h2>
+</div>
+
+<br>
+<br>
+<br>
+
+<button onclick="window.location.href = 'https://sushilkumar-majorproject-si-22.herokuapp.com/';" class="btn">previous page</button>
+
+<button onclick="window.location.href = 'https://sushilkumar-majorproject-si-22.herokuapp.com/mini';" class="btn">Next page</button>
+
+<br>
+<br>
+
+<!-- footer section starts here -->
+
+<section class="footer">
+<div class="box-container">
+<div class="box">
+<h3>quick links</h3>
+<a href="https://sushilkumar-majorproject-si-22.herokuapp.com/">home</a>
+<a href="https://sushilkumar-majorproject-si-22.herokuapp.com/aboutusnew">about us</a>
+<a href="https://sushilkumar-majorproject-si-22.herokuapp.com/blogs">blogs</a>
+</div>
+<div class="box">
+<h3>summer internship 2022</h3>
+<a href="#">major project</a>
+<a href="https://sushilkumar-majorproject-si-22.herokuapp.com/mini">mini projects</a>
+<a href="https://sushilkumar-majorproject-si-22.herokuapp.com/guidance">guidance</a>
+</div>
+<div class="box">
+<h3>extra links</h3>
+<a href="#">my account</a>
+<a href="#">ask question</a>
+<a href="#">privacy policy</a>
+</div>
+
+<div class="box">
+<h3>contact info</h3>
+<a href="callto:+91 73398 14571"><i class="fas fa-phone"></i>Phone</a>
+<a href="mailto:2020pietadsushil57@poornima.org"><i class="fas fa-envelope"></i>Email</a>
+</div>
+<div class="box">
+<h3>follow us</h3>
+<a target="_blank" href="https://www.linkedin.com/in/sushil-kumar-115721210"><i class="fab fa-linkedin"></i>linkedin</a>
+<a target="_blank" href="https://github.com/SushilKumar57"><i class="fab fa-github"></i>github</a>
+</div>
+</div>
+<div class="credit">Copyright © 2022 <span></span> || all rights reserved</div>
+</section>
+
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+<!-- custom js file link -->
+<script src="/static/script/script.js"></script>
+
+<!-- Jquery JS-->
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<!-- Vendor JS-->
+<script src="/static/vendor/select2/select2.min.js"></script>
+<script src="/static/vendor/datepicker/moment.min.js"></script>
+<script src="/static/vendor/datepicker/daterangepicker.js"></script>
+<!-- Main JS-->
+<script src="/static/js/global.js"></script>
+
+<div class="fixed-bottom ">
+<marquee>
+<h3>Developed by Sushil Kumar under the Guidance of Deepak Moud Sir, PIET</h3>
+</marquee>
+</div>
+</div>
+</body>
+</html>
